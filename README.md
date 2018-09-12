@@ -1,2 +1,36 @@
-# LANE-DETECTION-USING-DEEP-LEARNING
-Autonomous self-driving is in the trend for implementing it in our real life to remove all the hassles and accidents. Modern-day transport has come a long way but still far away from perfection and all-around safety. Lane Detection is a concept of demarcating lanes on the roads while the vehicle is moving. It has the capability of changing the vehicular movements on road, making them more organized and safe. This leap could provide for driver carelessness and avoid a lot of mishaps on the roads. Ride-hailing services like Uber and Ola can use them to monitor drivers and rate them based on driving skills. We have designed and trained a deep Convolutional Network model from scratch for lane detection since a CNN based model is known to work best for image datasets. We have used BDD100k dataset for training and testing for our model. We have used various metrics values for hyper-parameters tuning and took the ones which gave the best result. The training is done on Supercomputer NVIDIA-DGX V100. Idea By: Aditya Sharma, Microsoft
+# LaneDetection
+Lane Detection for Autonomous Driving Using Deep Learning
+
+This code uses real world dataset CamVid dataset from Cambridge University for training and testing. Images are collection of street views obtained while driving. The dataset contains pixel to pixel labels.
+
+The main idea of semantic segmentation using deep learning is to do away with computer vision techniquies since it has issues like image resolution, camera calibration,etc
+
+Semantic segmentation refers to complete scene understanding and dividing image into various segments one such segment which is of our use is the road or lane and vehicle. 
+
+
+The data is split into 60/40 ratio for training and testing. We are using pretrained Segnet for semantic segentation. Since the training takes time and was intitially trained by mathworks on Nvidia TitanX which took approximately 5 hours. 
+We used this pretrained network and narrowed down the classes from 30 to 2 i.e road and pedestrian.
+
+While grouping two or more classes similar classes get grouped together like
+Car={Car, Truck, SUV, Moving Vehicle}
+
+SegNet is initialised with weigths of pretrained VGG16. Additional layers are also added to pre-trained SegNet.
+
+We also downsize the images to reduce the training time.
+
+Since there are unequal instances of each class in dataset we balance classes using class weighting.
+
+Download pre-trained Segnet link
+https://www.mathworks.com/supportfiles/vision/data/segnetVGG16CamVid.mat
+
+Download images dataset
+http://web4.cs.ucl.ac.uk/staff/g.brostow/MotionSegRecData/files/701_StillsRaw_full.zip
+
+Download images label dataset
+http://web4.cs.ucl.ac.uk/staff/g.brostow/MotionSegRecData/data/LabeledApproved_full.zip
+
+Testing on more real world datasets like MapillaryVistas, Apollo, Kitti is under process and results will be updated soon.
+
+Feel free to contribute and extend the scope to the project:)
+
+
